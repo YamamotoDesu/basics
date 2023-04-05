@@ -17,8 +17,23 @@ class MyApp extends StatelessWidget {
         ),
       home: Scaffold(
         appBar: AppBar(title: const Text("Flutter Basic"),), 
-        body: const Center(
-          child: Text("Hello World")
+        body: Center(
+          child: Container(
+            height: 200,
+            width: 200,
+            decoration: BoxDecoration(
+              color: Colors.blue, 
+              borderRadius: BorderRadius.circular(10)),
+            child: const Center(
+              child: Text("Hello World",
+               style: TextStyle(
+                color: Colors.red,
+                fontSize: 20,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.bold
+               ),),
+            ),
+          )
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => debugPrint("clicked"),
