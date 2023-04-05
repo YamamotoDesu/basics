@@ -42,3 +42,48 @@ class MyApp extends StatelessWidget {
         ),
     );
 ```
+
+## Widgets - Container & Text
+
+<img width="300" alt="スクリーンショット 2023-04-05 22 28 10" src="https://user-images.githubusercontent.com/47273077/230094920-5e376066-75ff-4460-832d-6814d7f009df.png">
+
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.amber
+          ),
+        ),
+      home: Scaffold(
+        appBar: AppBar(title: const Text("Flutter Basic"),), 
+        body: Center(
+          child: Container(
+            height: 200,
+            width: 200,
+            decoration: BoxDecoration(
+              color: Colors.blue, 
+              borderRadius: BorderRadius.circular(10)),
+            child: const Center(
+              child: Text("Hello World",
+               style: TextStyle(
+                color: Colors.red,
+                fontSize: 20,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.bold
+               ),),
+            ),
+          )
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => debugPrint("clicked"),
+          child: const Icon(Icons.ac_unit)),
+        ),
+    );
+  }
+}
+```
