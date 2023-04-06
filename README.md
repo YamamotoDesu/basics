@@ -87,3 +87,63 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+
+##  Column & Padding  & SizedBox
+<img width="300" alt="スクリーンショット 2023-04-06 9 01 21" src="https://user-images.githubusercontent.com/47273077/230239615-7bb3b9b3-359c-47c6-880d-fde7ac2ae827.png">
+
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.amber),
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Flutter Basic"),
+        ),
+        body: Container(
+          color: Colors.pink,
+          child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                    color: Colors.green,
+                    child: const Text("First Column child")),
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: 200,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white),
+                  child: const Padding(
+                    padding: EdgeInsets.all(50.0),
+                    child: Text(
+                      "Hello World",
+                      style: TextStyle(color: Colors.red, fontSize: 20),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                const Text("Last Column child")
+              ]),
+        ),
+        floatingActionButton: FloatingActionButton(
+            onPressed: () => debugPrint("clicked"),
+            child: const Icon(Icons.ac_unit)),
+      ),
+    );
+  }
+}
+```
+
