@@ -1,9 +1,10 @@
+import 'package:basics/presentation/widget_example/widgets/button_example.dart';
 import 'package:flutter/material.dart';
 
-import '../../main.dart';
 import 'widgets/hello_world.dart';
 import 'widgets/kyo_yamamoto.dart';
 import 'widgets/layout_builder_example.dart';
+import 'widgets/media_query_example.dart';
 import 'widgets/row_xpanded_example.dart';
 import 'widgets/first_column_child.dart';
 
@@ -60,6 +61,10 @@ class WidgetExampleScreen extends StatelessWidget {
                   height: 40,
                 ),
                 LayoutBuilderExample(),
+                SizedBox(
+                  height: 40,
+                ),
+                ButtonExamples()
               ]),
         ),
       ),
