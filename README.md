@@ -391,6 +391,9 @@ class MyApp extends StatelessWidget {
 ```
 
 ## Widgets - Media Query
+
+<img width="300" alt="スクリーンショット 2023-04-06 11 53 06" src="https://user-images.githubusercontent.com/47273077/230260557-d4facd3b-6337-47bd-a2d9-70aabf296297.png">
+
 ```dart
 import 'package:flutter/material.dart';
 
