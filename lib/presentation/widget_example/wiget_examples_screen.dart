@@ -1,3 +1,4 @@
+import 'package:basics/presentation/compnents/custom_button.dart';
 import 'package:basics/presentation/widget_example/widgets/button_example.dart';
 import 'package:flutter/material.dart';
 
@@ -24,27 +25,27 @@ class WidgetExampleScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,
               //mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                SizedBox(
+              children: [
+                const SizedBox(
                   height: 20,
                 ),
                 RowExpandedExample(),
                 FirstColumnChild(),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                HelloWorld(),
-                SizedBox(
+                const HelloWorld(),
+                const SizedBox(
                   height: 20,
                 ),
-                KyoYamamoto(),
-                SizedBox(
+                const KyoYamamoto(),
+                const SizedBox(
                   height: 20,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 100,
                   width: 100,
                   child: CircleAvatar(
@@ -53,18 +54,49 @@ class WidgetExampleScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
-                MediaQueryExample(),
-                SizedBox(
+                const MediaQueryExample(),
+                const SizedBox(
                   height: 40,
                 ),
-                LayoutBuilderExample(),
-                SizedBox(
+                const LayoutBuilderExample(),
+                const SizedBox(
                   height: 40,
                 ),
-                ButtonExamples()
+                const ButtonExamples(),
+                const SizedBox(
+                  height: 40,
+                ),
+                CustomButton(
+                  onTap: () {
+                    print("tapped");
+                  },
+                  icon: Icons.home,
+                  iconColor: Colors.white,
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                CustomButton(
+                  onTap: () {
+                    print("tapped");
+                  },
+                  icon: Icons.play_arrow,
+                  iconColor: Colors.blue,
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                CustomButtonGesture(
+                    onTap: () {
+                      print("CustomButtonGesture tapped");
+                    },
+                    text: "gesture button"),
+                const SizedBox(
+                  height: 40,
+                ),
               ]),
         ),
       ),
