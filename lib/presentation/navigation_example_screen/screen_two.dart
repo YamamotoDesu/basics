@@ -13,8 +13,8 @@ class ScreenTwo extends StatelessWidget {
           child: TextButton(
         child: const Text('Go to Screen One'),
         onPressed: () {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const ScreenOne()));
+          // Navigator.pushReplacementNamed(context, '/screenOne');
+          Navigator.pushNamed(context, '/screenOne');
         },
       )),
     );
