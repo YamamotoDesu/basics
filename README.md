@@ -1078,7 +1078,7 @@ class ListScreen extends StatelessWidget {
 ```
 
 ## Navigation - BottomNavBar + IndexedStack
-<img width="513" alt="スクリーンショット 2023-04-07 13 34 42" src="https://user-images.githubusercontent.com/47273077/230541501-9a63e6f0-3843-4453-b8c5-ba91f8655c89.png">
+<img width="300" alt="スクリーンショット 2023-04-07 13 34 42" src="https://user-images.githubusercontent.com/47273077/230541501-9a63e6f0-3843-4453-b8c5-ba91f8655c89.png">
 
 root_bottom_navigation.dart
 ```dart
@@ -1126,4 +1126,78 @@ class _RootBottomNavigationState extends State<RootBottomNavigation> {
     );
   }
 }
+```
+
+## Navigation - basic
+<img width="300" alt="スクリーンショット 2023-04-07 13 34 42" src="https://user-images.githubusercontent.com/47273077/230545888-e5668a29-dad1-40d4-b714-b50e6c178ad1.gif">
+
+<img width="300" alt="スクリーンショット 2023-04-07 13 34 42" src="https://user-images.githubusercontent.com/47273077/230545968-afadd452-d587-46f3-aae0-15cf148764f3.gif">
+
+screen_one.dart
+```dart
+import 'package:flutter/material.dart';
+
+class ScreenOne extends StatelessWidget {
+  const ScreenOne({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Screen One')),
+      backgroundColor: Colors.green,
+      body: Center(
+          child: TextButton(
+        child: const Text('Go back'),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      )),
+    );
+  }
+}
+```
+
+screen_two.dart
+```dart
+import 'package:basics/presentation/navigation_example_screen/screen_one.dart';
+import 'package:flutter/material.dart';
+
+class ScreenTwo extends StatelessWidget {
+  const ScreenTwo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Screen Blue')),
+      backgroundColor: Colors.red,
+      body: Center(
+          child: TextButton(
+        child: const Text('Go to Screen One'),
+        onPressed: () {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const ScreenOne()));
+        },
+      )),
+    );
+  }
+}
+```
+
+wiget_examples_screen.dart
+```dart
+                CustomButton(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScreenOne()));
+                  },
+                  icon: Icons.play_arrow,
+                  iconColor: Colors.blue,
+                ),
+                CustomButtonGesture(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenTwo()));
+                    },
+                    text: "gesture button"),
 ```
