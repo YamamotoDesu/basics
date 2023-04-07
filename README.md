@@ -1201,3 +1201,122 @@ wiget_examples_screen.dart
                     },
                     text: "gesture button"),
 ```
+
+
+## Navigation - named Routes
+
+```dart
+import 'package:flutter/material.dart';
+
+import 'presentation/counter/counter_screen.dart';
+import 'presentation/list/list_screen.dart';
+import 'presentation/widget_example/wiget_examples_screen.dart';
+
+
+class RootBottomNavigation extends StatefulWidget {
+  const RootBottomNavigation({super.key});
+
+  @override
+  State<RootBottomNavigation> createState() => _RootBottomNavigationState();
+}
+
+class _RootBottomNavigationState extends State<RootBottomNavigation> {
+  int _curentIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: IndexedStack(
+        index: _curentIndex,
+        children: const [
+          WidgetExampleScreen(),
+          CounterScreen(),
+          ListScreen()
+        ],
+      ),
+      bottomNavigationBar:
+          BottomNavigationBar(
+            backgroundColor: Colors.amber,
+            selectedItemColor: Colors.blue,
+            onTap: (index) {
+              setState(() {
+                _curentIndex = index;
+              });
+            },
+            currentIndex: _curentIndex, items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.star), label: 'examples'),
+        BottomNavigationBarItem(icon: Icon(Icons.add), label: 'counter'),
+        BottomNavigationBarItem(icon: Icon(Icons.list), label: 'list'),
+      ]),
+    );
+  }
+}
+```
+
+wiget_examples_screen.dart
+```dart
+                CustomButton(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/screenOne');
+                  },
+                  icon: Icons.play_arrow,
+                  iconColor: Colors.blue,
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                CustomButtonGesture(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/screenTwo');
+                    },
+                    text: "gesture button"),
+                const SizedBox(
+                  height: 40,
+```
+
+screen_one.dart
+```dart
+import 'package:flutter/material.dart';
+
+class ScreenOne extends StatelessWidget {
+  const ScreenOne({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Screen One')),
+      backgroundColor: Colors.green,
+      body: Center(
+          child: TextButton(
+        child: const Text('Go back'),
+        onPressed: () {
+          // Navigator.pop(context);
+          Navigator.popUntil(context, (route) => route.isFirst);
+        },
+      )),
+    );
+  }
+}
+```
+
+screen_two.dart
+```dart
+class ScreenTwo extends StatelessWidget {
+  const ScreenTwo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Screen Blue')),
+      backgroundColor: Colors.red,
+      body: Center(
+          child: TextButton(
+        child: const Text('Go to Screen One'),
+        onPressed: () {
+          // Navigator.pushReplacementNamed(context, '/screenOne');
+          Navigator.pushNamed(context, '/screenOne');
+        },
+      )),
+    );
+  }
+}
+```
