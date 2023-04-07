@@ -19,101 +19,98 @@ class WidgetExampleScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Flutter Basic"),
       ),
-      body: Container(
-        color: Colors.white,
-        child: SingleChildScrollView(
-          child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              //mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                RowExpandedExample(),
-                FirstColumnChild(),
-                const SizedBox(
-                  height: 20,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const HelloWorld(),
-                const SizedBox(
-                  height: 20,
-                ),
-                const KyoYamamoto(),
-                const Person(
-                    age: '28',
-                    country: 'Japan',
-                    job: 'Fleancer for Mobile',
-                    name: 'Kyo',
-                    pictureUrl:
-                        'https://hatrabbits.com/wp-content/uploads/2017/01/random-1200x300.jpg'),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Person(
-                    age: '21',
-                    country: 'Japan',
-                    job: 'a Fleancer for Mobile aaa',
-                    name: 'Kyo',
-                    pictureUrl:
-                        'https://hatrabbits.com/wp-content/uploads/2017/01/random-1200x300.jpg'),
-                const SizedBox(
-                  height: 100,
-                  width: 100,
-                  child: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      'https://hatrabbits.com/wp-content/uploads/2017/01/random-1200x300.jpg',
-                    ),
+      body: SingleChildScrollView(
+        child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            //mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const SizedBox(
+                height: 20,
+              ),
+              const RowExpandedExample(),
+              const FirstColumnChild(),
+              const SizedBox(
+                height: 20,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const HelloWorld(),
+              const SizedBox(
+                height: 20,
+              ),
+              const KyoYamamoto(),
+              const Person(
+                  age: '28',
+                  country: 'Japan',
+                  job: 'Fleancer for Mobile',
+                  name: 'Kyo',
+                  pictureUrl:
+                      'https://hatrabbits.com/wp-content/uploads/2017/01/random-1200x300.jpg'),
+              const SizedBox(
+                height: 20,
+              ),
+              const Person(
+                  age: '21',
+                  country: 'Japan',
+                  job: 'a Fleancer for Mobile aaa',
+                  name: 'Kyo',
+                  pictureUrl:
+                      'https://hatrabbits.com/wp-content/uploads/2017/01/random-1200x300.jpg'),
+              const SizedBox(
+                height: 100,
+                width: 100,
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    'https://hatrabbits.com/wp-content/uploads/2017/01/random-1200x300.jpg',
                   ),
                 ),
-                const SizedBox(
-                  height: 40,
-                ),
-                const MediaQueryExample(),
-                const SizedBox(
-                  height: 40,
-                ),
-                const LayoutBuilderExample(),
-                const SizedBox(
-                  height: 40,
-                ),
-                const ButtonExamples(),
-                const SizedBox(
-                  height: 40,
-                ),
-                CustomButton(
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              const MediaQueryExample(),
+              const SizedBox(
+                height: 40,
+              ),
+              const LayoutBuilderExample(),
+              const SizedBox(
+                height: 40,
+              ),
+              const ButtonExamples(),
+              const SizedBox(
+                height: 40,
+              ),
+              CustomButton(
+                onTap: () {
+                  print("tapped");
+                },
+                icon: Icons.home,
+                iconColor: Colors.white,
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              CustomButton(
+                onTap: () {
+                  Navigator.pushNamed(context, '/screenOne');
+                },
+                icon: Icons.play_arrow,
+                iconColor: Colors.blue,
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              CustomButtonGesture(
                   onTap: () {
-                    print("tapped");
+                    Navigator.pushNamed(context, '/screenTwo');
                   },
-                  icon: Icons.home,
-                  iconColor: Colors.white,
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                CustomButton(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/screenOne');
-                  },
-                  icon: Icons.play_arrow,
-                  iconColor: Colors.blue,
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                CustomButtonGesture(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/screenTwo');
-                    },
-                    text: "gesture button"),
-                const SizedBox(
-                  height: 40,
-                ),
-              ]),
-        ),
+                  text: "gesture button"),
+              const SizedBox(
+                height: 40,
+              ),
+            ]),
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () => debugPrint("clicked"),

@@ -1,5 +1,6 @@
 import 'package:basics/presentation/navigation_example_screen/screen_one.dart';
 import 'package:basics/root_bottom_navigation.dart';
+import 'package:basics/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'presentation/navigation_example_screen/screen_two.dart';
@@ -14,9 +15,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(backgroundColor: Colors.amber),
-      ),
+      theme: AppThem.lightTheme,
+      darkTheme: AppThem.dartTheme,
       home: const RootBottomNavigation(),
       routes: <String, WidgetBuilder>{
         '/root': (BuildContext context) => const RootBottomNavigation(),
