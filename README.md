@@ -1076,3 +1076,7 @@ class ListScreen extends StatelessWidget {
   }
 }
 ```
+
+## Navigation - BottomNavBar + IndexedStack
+<img width="513" alt="スクリーンショット 2023-04-07 13 34 42" src="https://user-images.githubusercontent.com/47273077/230541501-9a63e6f0-3843-4453-b8c5-ba91f8655c89.png">
+
