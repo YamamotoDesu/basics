@@ -1,4 +1,5 @@
-import 'package:basics/presentation/widget_example/list/widget/list_item.dart';
+
+import 'package:basics/presentation/list/widget/list_item.dart';
 import 'package:flutter/material.dart';
 
 class ListScreen extends StatelessWidget {
