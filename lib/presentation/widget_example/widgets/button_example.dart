@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ButtonExamples extends StatelessWidget {
+class ButtonExamples extends StatefulWidget {
   const ButtonExamples({super.key});
 
+  @override
+  State<ButtonExamples> createState() => _ButtonExamplesState();
+}
+
+class _ButtonExamplesState extends State<ButtonExamples> {
+  bool switchState = true;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,9 +38,11 @@ class ButtonExamples extends StatelessWidget {
             },
             icon: const Icon(Icons.play_arrow)),
         Switch(
-            value: true,
+            value: switchState,
             onChanged: (value) {
-              print(value);
+              setState(() {
+                switchState = value;
+              });
             })
       ],
     );
