@@ -938,3 +938,9 @@ class Person extends StatelessWidget {
   }
 }
 ```
+
+## Widgets - Switch + Stateful Widget
+
+<img width="300" alt="スクリーンショット 2023-04-07 11 03 29" src="https://user-images.githubusercontent.com/47273077/230525731-3190e897-dce2-4c45-a6d1-1d86c8dc7e7b.png">
+
+```dart
