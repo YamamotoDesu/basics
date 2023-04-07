@@ -1320,3 +1320,38 @@ class ScreenTwo extends StatelessWidget {
   }
 }
 ```
+
+## Theme - create and use Theme
+
+```dart
+import 'package:flutter/material.dart';
+
+class AppThem {
+  AppThem._();
+
+  static const _primaryColorLight = Colors.lightBlueAccent;
+
+  static const _primaryColorDark = Colors.lightGreenAccent;
+
+  static final ThemeData lightTheme = ThemeData(
+      useMaterial3: true,
+      colorScheme: ColorScheme.fromSeed(
+          seedColor: _primaryColorLight, brightness: Brightness.light));
+
+  static final ThemeData dartTheme = ThemeData(
+      useMaterial3: true,
+      colorScheme: ColorScheme.fromSeed(seedColor: _primaryColorDark));
+}
+```
+
+main.dart
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: AppThem.lightTheme,
+      darkTheme: AppThem.dartTheme,
+ ```
