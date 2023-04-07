@@ -1,6 +1,4 @@
 import 'package:basics/presentation/compnents/custom_button.dart';
-import 'package:basics/presentation/navigation_example_screen/screen_one.dart';
-import 'package:basics/presentation/navigation_example_screen/screen_two.dart';
 import 'package:basics/presentation/widget_example/widgets/button_example.dart';
 import 'package:basics/presentation/widget_example/widgets/person.dart';
 import 'package:flutter/material.dart';
