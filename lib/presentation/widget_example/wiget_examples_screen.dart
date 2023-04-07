@@ -1,5 +1,6 @@
 import 'package:basics/presentation/compnents/custom_button.dart';
 import 'package:basics/presentation/widget_example/widgets/button_example.dart';
+import 'package:basics/presentation/widget_example/widgets/person.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/hello_world.dart';
@@ -42,9 +43,23 @@ class WidgetExampleScreen extends StatelessWidget {
                   height: 20,
                 ),
                 const KyoYamamoto(),
+                const Person(
+                    age: '28',
+                    country: 'Japan',
+                    job: 'Fleancer for Mobile',
+                    name: 'Kyo',
+                    pictureUrl:
+                        'https://hatrabbits.com/wp-content/uploads/2017/01/random-1200x300.jpg'),
                 const SizedBox(
                   height: 20,
                 ),
+                const Person(
+                    age: '21',
+                    country: 'Japan',
+                    job: 'a Fleancer for Mobile aaa',
+                    name: 'Kyo',
+                    pictureUrl:
+                        'https://hatrabbits.com/wp-content/uploads/2017/01/random-1200x300.jpg'),
                 const SizedBox(
                   height: 100,
                   width: 100,
