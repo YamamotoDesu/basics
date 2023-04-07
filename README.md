@@ -1002,3 +1002,77 @@ class _CounterScreenState extends State<CounterScreen> {
   }
 }
 ```
+
+## Widgets - ListView + Builder
+
+<img width="300" alt="スクリーンショット 2023-04-07 12 00 07" src="https://user-images.githubusercontent.com/47273077/230532328-4cc21c5d-5b0e-493b-b85f-b9f9692bd16f.png">
+
+ListItem.dart
+```dart
+import 'package:flutter/material.dart';
+
+class ListItem extends StatefulWidget {
+  final String title;
+  final int index;
+  const ListItem({super.key, required this.title, required this.index});
+
+  @override
+  State<ListItem> createState() => _ListItemState();
+}
+
+class _ListItemState extends State<ListItem> {
+  bool _isSelected = false;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.blueAccent, borderRadius: BorderRadius.circular(5)),
+      child: ListTile(
+        title: Text(widget.title),
+        subtitle: Text('item number ${widget.index}'),
+        leading: Checkbox(
+          value: _isSelected,
+          onChanged: (value) {
+            setState(() {
+              _isSelected = value ?? false;
+            });
+          },
+        ),
+      ),
+    );
+  }
+}
+```
+
+ListScreen.dart
+```dart
+import 'package:basics/presentation/widget_example/list/widget/list_item.dart';
+import 'package:flutter/material.dart';
+
+class ListScreen extends StatelessWidget {
+  const ListScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    List<String> example = ['example', 'list', 'with', 'strings'];
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('ListView Example'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: ListView.separated(
+              itemCount: example.length,
+              separatorBuilder: (context, index) {
+                return const SizedBox(height: 30);
+              },
+              itemBuilder: (context, index) {
+                return ListItem(
+                  title: example[index],
+                  index: index,
+                );
+              }),
+        ));
+  }
+}
+```
