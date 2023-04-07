@@ -1,4 +1,4 @@
-import 'package:basics/presentation/navigation_example_screen/screen_one.dart';
+
 import 'package:flutter/material.dart';
 
 class ScreenTwo extends StatelessWidget {
