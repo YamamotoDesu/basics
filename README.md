@@ -1355,3 +1355,44 @@ class MyApp extends StatelessWidget {
       theme: AppThem.lightTheme,
       darkTheme: AppThem.dartTheme,
  ```
+ 
+ ## heme Service - State Management with Provider
+ 
+<img width="300" alt="スクリーンショット 2023-04-08 12 38 35" src="https://user-images.githubusercontent.com/47273077/230701632-e8bcc151-dfdb-4fba-905b-5d0f407d7125.gif">
+
+main.dart
+ ```dart
+ void main() {
+  runApp(ChangeNotifierProvider(
+    create: (context) => ThemeService(),
+    child: const MyApp(),
+  ));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<ThemeService>(builder: (context, themeService, child) {
+      return MaterialApp(
+        themeMode: themeService.isDarkModeOn ? ThemeMode.dark : ThemeMode.light,
+        theme: AppThem.lightTheme,
+        darkTheme: AppThem.dartTheme,
+        home: const RootBottomNavigation(),
+        routes: <String, WidgetBuilder>{
+```
+
+lib/application/theme_service.dart
+```dart
+import 'package:flutter/material.dart';
+
+class ThemeService extends ChangeNotifier {
+  bool isDarkModeOn = false;
+
+  void toggleTheme() {
+    isDarkModeOn = !isDarkModeOn;
+    notifyListeners();
+  }
+}
+```
