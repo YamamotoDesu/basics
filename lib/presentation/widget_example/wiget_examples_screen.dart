@@ -1,7 +1,9 @@
+import 'package:basics/application/theme_service.dart';
 import 'package:basics/presentation/compnents/custom_button.dart';
 import 'package:basics/presentation/widget_example/widgets/button_example.dart';
 import 'package:basics/presentation/widget_example/widgets/person.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'widgets/hello_world.dart';
 import 'widgets/kyo_yamamoto.dart';
@@ -113,7 +115,9 @@ class WidgetExampleScreen extends StatelessWidget {
             ]),
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: () => debugPrint("clicked"),
+          onPressed: (){
+            Provider.of<ThemeService>(context, listen: false).toggleTheme();
+          },
           child: const Icon(Icons.ac_unit)),
     );
   }
