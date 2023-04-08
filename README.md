@@ -1396,3 +1396,13 @@ class ThemeService extends ChangeNotifier {
   }
 }
 ```
+
+lib/presentation/widget_example/wiget_examples_screen.dart
+```dart
+      floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            Provider.of<ThemeService>(context, listen: false).toggleTheme();
+          },
+          child: const Icon(Icons.ac_unit)),
+    );
+```
