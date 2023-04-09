@@ -1515,3 +1515,281 @@ lib/presentation/widget_example/wiget_examples_screen.dart
   }
 }
 ```
+
+## Animations II - Sunrise Sun, Moon & Stars
+
+<img width="300" alt="スクリーンショット 2023-04-08 17 09 04" src="https://user-images.githubusercontent.com/47273077/230759630-56b20c75-9668-488e-9ccf-8b448cddff71.gif">
+
+theme_animation.dart
+```dart
+import 'package:basics/application/theme_service.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'widgets/moonstart.dart';
+import 'widgets/star.dart';
+import 'widgets/sun.dart';
+
+class ThemeAnimationScreen extends StatelessWidget {
+  const ThemeAnimationScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Theme Animation'),
+      ),
+      body: Consumer<ThemeService>(
+        builder: ((context, themeService, child) {
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Material(
+                elevation: 20,
+                borderRadius: BorderRadius.circular(15),
+                child: Container(
+                  height: 500,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          color: themeService.isDarkModeOn
+                              ? Colors.black87
+                              : Colors.grey,
+                          offset: const Offset(0, 3),
+                          blurRadius: 5,
+                          spreadRadius: 7)
+                    ],
+                    borderRadius: BorderRadius.circular(15),
+                    gradient: LinearGradient(
+                        colors: themeService.isDarkModeOn
+                            ? const [
+                                Color(0xFF94A9FF),
+                                Color(0xFF6B66CC),
+                                Color(0xFF200F75),
+                              ]
+                            : const [
+                                Color(0xDDFFFA66),
+                                Color(0xDDFFA057),
+                                Color(0xDD940899),
+                              ],
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter),
+                  ),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: 70,
+                        right: 50,
+                        child: AnimatedOpacity(
+                            duration: const Duration(milliseconds: 200),
+                            opacity: themeService.isDarkModeOn ? 1 : 0,
+                            child: const Star()),
+                      ),
+                      Positioned(
+                        top: 150,
+                        left: 60,
+                        child: AnimatedOpacity(
+                            duration: const Duration(milliseconds: 200),
+                            opacity: themeService.isDarkModeOn ? 1 : 0,
+                            child: const Star()),
+                      ),
+                      Positioned(
+                        top: 40,
+                        left: 100,
+                        child: AnimatedOpacity(
+                            duration: const Duration(milliseconds: 200),
+                            opacity: themeService.isDarkModeOn ? 1 : 0,
+                            child: const Star()),
+                      ),
+                      Positioned(
+                        top: 50,
+                        left: 50,
+                        child: AnimatedOpacity(
+                            duration: const Duration(milliseconds: 200),
+                            opacity: themeService.isDarkModeOn ? 1 : 0,
+                            child: const Star()),
+                      ),
+                      AnimatedPositioned(
+                        duration: const Duration(milliseconds: 400),
+                        top: themeService.isDarkModeOn ? 100 : 130,
+                        right: themeService.isDarkModeOn ? 100 : -40,
+                        child: AnimatedOpacity(
+                            duration: const Duration(milliseconds: 300),
+                            opacity: themeService.isDarkModeOn ? 1 : 0,
+                            child: const Moon()),
+                      ),
+                      AnimatedPadding(
+                        padding: EdgeInsets.only(
+                            top: themeService.isDarkModeOn ? 110 : 50),
+                        duration: const Duration(milliseconds: 200),
+                        child: const Center(
+                          child: Sun(),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: 225,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              color: themeService.isDarkModeOn
+                                  ? Colors.grey[800]
+                                  : Colors.white,
+                              borderRadius: const BorderRadius.only(
+                                  bottomLeft: Radius.circular(15),
+                                  bottomRight: Radius.circular(15))),
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  themeService.isDarkModeOn
+                                      ? 'To Dark?'
+                                      : 'To Briight',
+                                  style: const TextStyle(
+                                      fontSize: 21,
+                                      fontWeight: FontWeight.w600),
+                                  textAlign: TextAlign.center,
+                                ),
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                                Text(
+                                  themeService.isDarkModeOn
+                                      ? 'let the sun rise'
+                                      : 'let it be night ',
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontStyle: FontStyle.italic),
+                                  textAlign: TextAlign.center,
+                                ),
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                                Switch(
+                                    value: themeService.isDarkModeOn,
+                                    onChanged: (_) {
+                                      themeService.toggleTheme();
+                                    })
+                              ]),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        }),
+      ),
+    );
+  }
+}
+```
+
+star.dart
+```dart
+import 'package:flutter/material.dart';
+
+class Star extends StatelessWidget {
+  const Star({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 2,
+      height: 2,
+      decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: const Color(0xFFC9E9FC),
+          boxShadow: [
+            BoxShadow(
+                color: const Color(0xFFC9E9FC).withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: const Offset(0, 0))
+          ]),
+    );
+  }
+}
+```
+
+moonstart.dart
+```dart
+import 'package:flutter/material.dart';
+
+class Moon extends StatelessWidget {
+  const Moon({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 30,
+      width: 30,
+      decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: LinearGradient(colors: [
+            Color(0xFF8983F7),
+            Color(0xFFA3DAFB),
+          ], begin: Alignment.bottomLeft, end: Alignment.topRight)),
+    );
+  }
+}
+```
+
+sun.dart
+```dart
+import 'package:flutter/material.dart';
+
+import 'sun_shine.dart';
+
+class Sun extends StatelessWidget {
+  const Sun({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SunShine(
+      radius: 160,
+      child: SunShine(
+        radius: 120,
+        child: SunShine(
+          radius: 80,
+          child: Container(
+            height: 50,
+            width: 50,
+            decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(colors: [
+                  Color(0xDDFC554F),
+                  Color(0xDDFFF79E),
+                ], begin: Alignment.bottomLeft, end: Alignment.topRight)),
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+sun_shine.dart
+```dart
+import 'package:flutter/material.dart';
+
+class SunShine extends StatelessWidget {
+  final double radius;
+  final Widget child;
+  const SunShine({super.key, required this.child, required this.radius});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: radius,
+      width: radius,
+      decoration: BoxDecoration(
+          shape: BoxShape.circle, color: Colors.white.withOpacity(0.1)),
+      child: Center(
+        child: child,
+      ),
+    );
+  }
+  ```
